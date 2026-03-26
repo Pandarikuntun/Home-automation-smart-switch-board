@@ -1,1 +1,14 @@
 # Home-automation-smart-switch-board
+
+This project is a complete WiFi Manager and Device Control system using ESP32-C3, designed to make IoT devices easy to configure and control without hardcoding network details. When the ESP32 is powered on, it first checks whether WiFi credentials (SSID and password) are already stored in its internal flash memory using the Preferences library. If valid credentials are found, the ESP32 automatically attempts to connect to that WiFi network. Once connected, it obtains a local IP address and continues normal operation, allowing the user to control devices through a web interface.
+
+If no WiFi credentials are saved or if the connection fails, the ESP32 switches to Access Point (AP) mode. In this mode, it creates its own WiFi network (for example, “ESP32-C3-Setup”). The user connects their mobile phone to this network and opens a browser to access a configuration page (usually at 192.168.4.1). The ESP32 scans for nearby WiFi networks and displays them in a list. The user selects their desired network, enters the password, and submits the form. This triggers the handleSave() function, which stores the credentials in flash memory and attempts to connect to the selected WiFi network.
+
+After a successful connection, the ESP32 retrieves its assigned local IP address from the router and displays a “WiFi Connected” page showing the device control URL (for example, http://192.168.1.25
+). The user can click this link to open the device control page. This page allows control of connected devices such as LEDs and a fan through simple web buttons and sliders. The system also includes button-based manual control and a current sensor (ACS712) for protection. If the measured current exceeds a defined threshold (e.g., 2A), the ESP32 automatically turns off all devices to prevent damage.
+
+This type of system is widely used in real-world IoT applications such as smart home automation, smart switches, IoT-based monitoring systems, and commercial smart devices like plugs and routers. The main advantage is that it eliminates the need to reprogram the ESP32 whenever the WiFi network changes, making it highly flexible and user-friendly. It also does not require any mobile application, as everything works through a standard web browser. Additionally, since the credentials are stored in non-volatile memory, the device can reconnect automatically after a restart.
+
+However, the system has some limitations. Security is basic, as WiFi credentials are stored without encryption, making it unsuitable for highly secure applications without further improvements. The range and performance depend on the WiFi network, and the user interface is simple compared to commercial products. Despite these limitations, this project demonstrates a powerful and practical IoT concept, combining networking, embedded systems, and web control into a single, efficient solution.
+
+
