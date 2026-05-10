@@ -4,7 +4,7 @@ for local use project file is Home_light_controle_1-5
 
 for long distance use project1_firebase8l_2f
 
-use html file 
+use html file link https://pandarikuntun.github.io/Home-automation-smart-switch-board/project1_firebase8l_2f.html
 
 This project is a complete WiFi Manager and Device Control system using ESP32-C3, designed to make IoT devices easy to configure and control without hardcoding network details. When the ESP32 is powered on, it first checks whether WiFi credentials (SSID and password) are already stored in its internal flash memory using the Preferences library. If valid credentials are found, the ESP32 automatically attempts to connect to that WiFi network. Once connected, it obtains a local IP address and continues normal operation, allowing the user to control devices through a web interface.
 
