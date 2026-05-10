@@ -17,4 +17,27 @@ This type of system is widely used in real-world IoT applications such as smart 
 
 However, the system has some limitations. Security is basic, as WiFi credentials are stored without encryption, making it unsuitable for highly secure applications without further improvements. The range and performance depend on the WiFi network, and the user interface is simple compared to commercial products. Despite these limitations, this project demonstrates a powerful and practical IoT concept, combining networking, embedded systems, and web control into a single, efficient solution.
 
+fire base api keys 
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCfMFnVHJHUp55aVb1WNT8kQCyWjypiwJ8",
+  authDomain: "esp32-c3-70289.firebaseapp.com",
+  databaseURL: "https://esp32-c3-70289-default-rtdb.firebaseio.com",
+  projectId: "esp32-c3-70289",
+  storageBucket: "esp32-c3-70289.firebasestorage.app",
+  messagingSenderId: "951645057066",
+  appId: "1:951645057066:web:7a650a5d4d0215f5b8d353",
+  measurementId: "G-79T7Q1VB7Z"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
