@@ -1,0 +1,71 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>ESP32 Smart Control Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body{font-family:Arial;margin:0;background:#0f172a;color:white;text-align:center;}
+    h2{margin-top:20px;color:#38bdf8;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;padding:15px;}
+    .card{background:#1e293b;padding:15px;border-radius:12px;}
+    button{padding:8px;margin:5px;border:none;border-radius:8px;font-weight:bold;}
+    .on{background:#22c55e;color:white;}
+    .off{background:#ef4444;color:white;}
+    .slider-box{background:#1e293b;margin:10px;padding:15px;border-radius:12px;}
+    </style>
+    </head>
+
+    <body>
+
+    <h2> ESP32 Smart Control Panel</h2>
+
+    <div class="grid" id="buttons"></div>
+
+    <div class="slider-box">
+    <h3> FAN Control</h3>
+    <input type="range" min="0" max="255" value="0" oninput="fan(this.value)">
+    <p id="fanval">0%</p>
+    </div>
+
+    <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCfMFnVHJHUp55aVb1WNT8kQCyWjypiwJ8",
+      authDomain: "esp32-c3-70289.firebaseapp.com",
+      databaseURL: "https://esp32-c3-70289-default-rtdb.firebaseio.com",
+      projectId: "esp32-c3-70289",
+      storageBucket: "esp32-c3-70289.firebasestorage.app",
+      messagingSenderId: "951645057066",
+      appId: "1:951645057066:web:7a650a5d4d0215f5b8d353",
+      measurementId: "G-79T7Q1VB7Z"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const container = document.getElementById("buttons");
+
+    for (let i = 1; i <= 4; i++) {
+    container.innerHTML += `
+    <div class="card">
+    <h3>OUT${i}</h3>
+    <button class="on" onclick="on(${i})">ON</button>
+    <button class="off" onclick="off(${i})">OFF</button>
+    </div>`;
+    }
+
+    window.on = (n)=>{ set(ref(db,"device/out"+n),true); }
+    window.off = (n)=>{ set(ref(db,"device/out"+n),false); }
+
+    window.fan = (val)=>{
+    document.getElementById("fanval").innerText = val+"%";
+    set(ref(db,"device/fan1"),Number(val));
+    }
+
+    </script>
+
+    </body>
+    </html>
