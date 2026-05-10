@@ -1,5 +1,9 @@
 # Home-automation-smart-switch-board
 
+for local use project file is Home_light_controle_1-5
+
+for long distance use project1_firebase8l_2f
+use html file 
 This project is a complete WiFi Manager and Device Control system using ESP32-C3, designed to make IoT devices easy to configure and control without hardcoding network details. When the ESP32 is powered on, it first checks whether WiFi credentials (SSID and password) are already stored in its internal flash memory using the Preferences library. If valid credentials are found, the ESP32 automatically attempts to connect to that WiFi network. Once connected, it obtains a local IP address and continues normal operation, allowing the user to control devices through a web interface.
 
 If no WiFi credentials are saved or if the connection fails, the ESP32 switches to Access Point (AP) mode. In this mode, it creates its own WiFi network (for example, “ESP32-C3-Setup”). The user connects their mobile phone to this network and opens a browser to access a configuration page (usually at 192.168.4.1). The ESP32 scans for nearby WiFi networks and displays them in a list. The user selects their desired network, enters the password, and submits the form. This triggers the handleSave() function, which stores the credentials in flash memory and attempts to connect to the selected WiFi network.
