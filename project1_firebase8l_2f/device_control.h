@@ -106,10 +106,10 @@ String devicePage() {
 
     const firebaseConfig = {
         apiKey: "AIzaSyCfMFnVHJHUp55aVb1WNT8kQCyWjypiwJ8",
-        authDomain: "esp32-c3-70289.firebaseapp.com",
-        databaseURL: "https://esp32-c3-70289-default-rtdb.firebaseio.com",
-        projectId: "esp32-c3-70289",
-        storageBucket: "esp32-c3-70289.firebasestorage.app",
+        authDomain: "70289.firebaseapp.com",
+        databaseURL: "https://70289-default-rtdb.firebaseio.com",
+        projectId: "70289",
+        storageBucket: "70289.firebasestorage.app",
         messagingSenderId: "951645057066",
         appId: "1:951645057066:web:7a650a5d4d0215f5b8d353",
       
